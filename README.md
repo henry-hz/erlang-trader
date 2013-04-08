@@ -7,10 +7,10 @@ This very nice and well-written project : https://code.google.com/p/algo-trader/
 will be a beautiful case on how you can modulate and scalate to multiple nodes, sharing responsability between processors,
 in a clean and elegant architecture.
 
-You can easily configure nodes to run in separate machines, so the Technical Analysis calculations could be done in another machine,
+You can easily configure nodes to run in separate machines, so the Technical Analysis calculations could be done in other machines,
 and strategies only subscribes to receive signals.
 
-The "Services" I suggest from this begining:
+The "Services" I suggest from this begining (Every service should be an OTP application).
 
 1. Fix 4.4 Market Data Reader (we can do 1 process per instrument)
 2. OMS (The main order management system, spawn 1 process for every strategy)
