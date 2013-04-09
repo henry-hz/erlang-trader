@@ -2,6 +2,7 @@ erlang-trader
 =============
 
 Porting the AlgoTrader (Java) code to Erlang to build a high-flexible framework to be used in the following scenarios:
+
 1. Backtest portfolio simulation
 2. Portfolio risk monitoring
 3. Algorithmic trading
