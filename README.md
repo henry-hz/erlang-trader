@@ -1,7 +1,11 @@
 erlang-trader
 =============
 
-Porting the AlgoTrader (Java) code to Erlang
+Porting the AlgoTrader (Java) code to Erlang to build a high-flexible framework to be used in the following scenarios:
+1. Backtest portfolio simulation
+2. Portfolio risk monitoring
+3. Algorithmic trading
+4. Multi-user trading platform (server-side)
 
 This very nice and well-written project : https://code.google.com/p/algo-trader/wiki/AlgoTraderDocumentation ported to Erlang
 will be a beautiful case on how you can modulate and scalate to multiple nodes, sharing responsability between processors,
@@ -21,4 +25,4 @@ The "Services" I suggest from this begining (Every service should be an OTP appl
 7. Technical Analysis Signals (1 process for every instrument, send signals to the Trade Decision Server)
 8. Trade Decision Server (receives signals from TA, events, economic reports, etc... and send buy/sell orders to the OMS)
 9. Fix 4.4 Order Server - Translates buy/sell signals from the OMS to Fix protocol (can be done in FPGA too...)
-
+10. R and Matlab plug-in
