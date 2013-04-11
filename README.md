@@ -1,4 +1,4 @@
-erlang-trader
+ERLANG-TRADER 
 =============
 
 Porting the AlgoTrader (Java) code to Erlang to build a high-flexible framework to be used in the following scenarios:
@@ -15,6 +15,8 @@ in a clean and elegant architecture.
 You can easily configure nodes to run in separate machines, so the Technical Analysis calculations could be done in other machines,
 and strategies only subscribes to receive signals.
 
+For the first phase of the erlang-trader, the focus is (and can't be other) to train ourselves on "how does a flexible financial message based framework should be ?", but once we have it running, and more important, people feel that is fun to write strategies on it, we should go deep on the optimization level.
+
 The "Services" I suggest from this begining (Every service should be an OTP application).
 
 1. Fix 4.4 Market Data Reader (we can do 1 process per instrument)
@@ -27,3 +29,13 @@ The "Services" I suggest from this begining (Every service should be an OTP appl
 8. Trade Decision Server (receives signals from TA, events, economic reports, etc... and send buy/sell orders to the OMS)
 9. Fix 4.4 Order Server - Translates buy/sell signals from the OMS to Fix protocol (can be done in FPGA too...)
 10. R and Matlab plug-in
+
+Let's use the rebar tool to compile and leave this cool things listed below to be done after we have a small working prototype. Think the prototype as a substitution of a UML diagram.
+
+1. Fault tolerance
+2. Optimization
+3. Scalability
+4. Dynamic-code upgrade
+5. Event handling behaviors
+
+

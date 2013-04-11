@@ -1,0 +1,1 @@
+This is the abstract level of the Market Data connection, so it can hear from many adaptors at the same time, and strategies can 'subcribe' to 'hear' the important information it needs to open or close positions. This service will start adapter connectors, monitor them, and even kill them (I mean their processes, not the support guy on the telephone).

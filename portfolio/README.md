@@ -1,0 +1,1 @@
+Every position is a process that starts when the position server receives a new buy or sell request (STO/BTO sell to open or buy to open) order, and dies when itself receives a STC/BTC order (sell to close/buy to close). The cool thing here is that a position is a living thing in the memory, and not some dead information on a database table.
