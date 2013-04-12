@@ -7,13 +7,6 @@ https://code.google.com/p/algo-trader/source/browse/#svn%2Ftrunk%2FAlgoTrader%2F
 Install a fix simulator to have the Sell Side signals. Really cool app.
 http://fiximulator.org/
 
-Install the Java QuickFIX engine:
-http://www.quickfixj.org 
-
-Change some config files:
-To run the Banzai demo example in the QuickFix Engine example folder and connect the Banzai to the Fiximulator application, take a look at the /doc directory
-to see some FIX config files.
-
 Install the wireshark to watch the FIX on the fly. (please, don't invite your wife, for sure she prefers to see some movie. Anyway, you can start to see the movie with her, and when she gets distracted, you can come back to the computer to watch the messages passing).
 http://www.wireshark.org/
 
@@ -35,6 +28,7 @@ http://www.mbtrading.com/developersMain.aspx?page=fix
 
 General
 
+http://www.quickfixj.org
 http://www.fixprotocol.org
 
 
