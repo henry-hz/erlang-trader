@@ -1,0 +1,9 @@
+{application,fix_engine,
+             [{description,[]},
+              {vsn,"1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {mod,{fix_engine_app,[]}},
+              {env,[]},
+              {modules,[fix_engine_app,fix_engine_sup,lib_chan,lib_chan_auth,
+                        lib_chan_cs,lib_chan_mm,lib_md5,test_logon]}]}.
