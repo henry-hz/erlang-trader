@@ -17,7 +17,7 @@ import java.util.TreeMap;
 
 public class GenerateErlangForFIXFields {
 	
-	public static void generateFixDateFile(String destination, List<FixRawField> fields, Map<String, String> versions) throws IOException {
+	public static void generateFixDateFile(String destination, List<FixRawField> fields) throws IOException {
 		BufferedWriter fix_data = new BufferedWriter(new OutputStreamWriter(new DataOutputStream(new FileOutputStream(destination))));
 		fix_data.write("-ifndef(FIX_DATA_HRL).");
 		fix_data.newLine();
@@ -29,10 +29,10 @@ public class GenerateErlangForFIXFields {
 		fix_data.write("-define(FIELD_SIZE, 5).");
 		fix_data.newLine();
 		
-		for (Entry<String, String> entry : versions.entrySet()) {
-			fix_data.write("-define("+ entry.getValue() +", '"+ entry.getKey() +"').");
-			fix_data.newLine();
-		}
+//		for (Entry<String, String> entry : versions.entrySet()) {
+//			fix_data.write("-define("+ entry.getValue() +", '"+ entry.getKey() +"').");
+//			fix_data.newLine();
+//		}
 		
 		for (FixRawField field : fields) {
 			String id = field.getId();
@@ -40,11 +40,11 @@ public class GenerateErlangForFIXFields {
 			String xmlTag = field.getXmlTag();
 			String version = field.getVersion();
 			String values = field.getValues();
-			String normalizedVersion = versions.get(version);
+//			String normalizedVersion = versions.get(version);
 			
 			fix_data.write("-define("+ name +", "+ id +").");
 			fix_data.newLine();
-			fix_data.write("-define("+ name +"_Type(V), {?"+ name +", '"+ (xmlTag.isEmpty() ? "undefined" : xmlTag) +"', V, "+ values +", ?"+ normalizedVersion +"}).");
+			fix_data.write("-define("+ name +"_Type(V), {?"+ name +", '"+ (xmlTag.isEmpty() ? "undefined" : xmlTag) +"', V, "+ values +", '"+ version +"'}).");
 			fix_data.newLine();
 			fix_data.newLine();
 		}
@@ -54,7 +54,7 @@ public class GenerateErlangForFIXFields {
 	}
 	
 	
-	public static void generateFixFiledFile(String destination, List<FixRawField> fields, Map<String, String> versions) throws IOException {
+	public static void generateFixFiledFile(String destination, List<FixRawField> fields) throws IOException {
 		List<String> exports = new LinkedList<String>();
 		List<String> functions = new LinkedList<String>();
 		List<String> create = new LinkedList<String>();
@@ -62,10 +62,10 @@ public class GenerateErlangForFIXFields {
 		for (FixRawField field : fields) {
 			String name = field.getName();
 			String type = field.getType();
-			String version = field.getVersion();
+//			String version = field.getVersion();
 			
-			String normalizedVersion = "FIX"+ version.replaceAll("\\.|\\/|-", "_") +"_VERSION";
-			versions.put(version, normalizedVersion);
+//			String normalizedVersion = "FIX"+ version.replaceAll("\\.|\\/|-", "_") +"_VERSION";
+//			versions.put(version, normalizedVersion);
 			
 			functions.add("-spec is_"+ name +"(Value) -> boolean() when"); 
 			functions.add("				   Value :: {integer(), string(), any(), list(), string()}.");
@@ -176,15 +176,15 @@ public class GenerateErlangForFIXFields {
 		return fields;
 	}
 	
-	public static Map<String, String> parseVersions(List<FixRawField> fields) {
-		Map<String, String> versions = new TreeMap<String, String>();
-		for (FixRawField field : fields) {
-			String version = field.getVersion();
-			String normalizedVersion = "FIX"+ version.replaceAll("\\.|\\/|-", "_") +"_VERSION";
-			versions.put(version, normalizedVersion);
-		}
-		return versions;
-	}
+//	public static Map<String, String> parseVersions(List<FixRawField> fields) {
+//		Map<String, String> versions = new TreeMap<String, String>();
+//		for (FixRawField field : fields) {
+//			String version = field.getVersion();
+//			String normalizedVersion = "FIX"+ version.replaceAll("\\.|\\/|-", "_") +"_VERSION";
+//			versions.put(version, normalizedVersion);
+//		}
+//		return versions;
+//	}
 
 	/**
 	 * @param args
@@ -194,10 +194,10 @@ public class GenerateErlangForFIXFields {
 		String path = new File(url.getPath()).getParent() + "/data";
 		
 		List<FixRawField> fields = parse(path+"/FIX-Fields.csv");
-		Map<String, String> versions = parseVersions(fields);
+//		Map<String, String> versions = parseVersions(fields);
 		
-		generateFixDateFile(path+"/fix_field_data.hrl", fields, versions);
-		generateFixFiledFile(path+"/fix_field.erl", fields, versions);
+		generateFixDateFile(path+"/fix_field_data.hrl", fields);
+		generateFixFiledFile(path+"/fix_field.erl", fields);
 	}
 
 }
