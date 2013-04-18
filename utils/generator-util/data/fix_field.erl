@@ -1,7 +1,7 @@
 -module(fix_field).
 
 -export([create/2,
-         is_defined/1,
+          is_defined/1,
          is_valid/1]).
 
 -include("fix.hrl").

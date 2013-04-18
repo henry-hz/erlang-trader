@@ -18,9 +18,18 @@
 -type fix_field() :: #fix_field{}.
 
 
-%#fix_field_descriptor{id = ?Account, xml_tag = '', accepted_values = [], version = ''}
+-record(fix_comp_descriptor,
+		{name :: string(),
+		 xml_tag :: string(),
+		 category :: string(),
+		 repeating :: integer(),
+		 type :: string()}).
+-type fix_comp_descriptor() :: #fix_comp_descriptor{}.
 
-
+-record(fix_comp,
+		{id :: [integer() | fix_comp()],
+		 descriptor :: fix_comp_descriptor() }).
+-type fix_comp() :: #fix_comp{}.
 
 %%--------------------------------------------------------------------------
 -endif.
