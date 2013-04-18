@@ -4,13 +4,18 @@
 
 
 -record(fix_field_descriptor,
-	{id :: integer(),
-	 xml_tag :: string(),
+	{name :: string(),
+     xml_tag :: string(),
 	 accepted_values :: [any()],
-	 version :: string()}).
+	 version :: string(),
+	 tranform :: fun((any()) -> any())}).
+-type fix_field_descriptor() :: #fix_field_descriptor{}.
+
 -record(fix_field,
-		{value :: any(),
-		 descriptor :: fix_field_descriptor()}).
+		{id :: integer(),
+		 value :: [any()] | any(),
+		 descriptor :: fix_field_descriptor() }).
+-type fix_field() :: #fix_field{}.
 
 
 %#fix_field_descriptor{id = ?Account, xml_tag = '', accepted_values = [], version = ''}
