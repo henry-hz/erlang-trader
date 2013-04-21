@@ -7,6 +7,8 @@ Porting the AlgoTrader (Java) code to Erlang to build a high-flexible framework 
 2. Portfolio risk monitoring
 3. Algorithmic trading
 4. Multi-user trading platform (server-side)
+5. System Integration **
+
 
 This very nice and well-written project : https://code.google.com/p/algo-trader/wiki/AlgoTraderDocumentation ported to Erlang
 will be a beautiful case on how you can modulate and scalate to multiple nodes, sharing responsability between processors,
@@ -38,4 +40,5 @@ Let's use the rebar tool to compile and leave this cool things listed below to b
 4. Dynamic-code upgrade
 5. Event handling behaviors
 
-
+** At Itaú Asset Management, we go even further with the FIX Protocol. We treat it as an important tool for integration between our internal systems. Everyone remembers the traditional conflict between STP and modularity. The FIX Protocol standardised and smoothed the path to modularity! There is no need for creating and managing interfaces, APIs or even Enterprise Service Buses. It is just necessary to include a  FIX engine in your application and specify the communication details to every other application via an XML configuration file.
+[By Christian J. Zimmer and Hellinton Hatsuo Takada, Itaú Asset Management]
