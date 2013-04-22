@@ -16,12 +16,12 @@
         V :: any(). 
 create(Id, V) -> 
     FD = create_field_descriptor(Id),
-	   case is_valid_field_descriptor(FD) of 
-	       false -> 
-	            #fix_field{};
-	       true -> 
-	            Fun = FD#fix_field_descriptor.tranform,
-	            #fix_field{id = Id, value = Fun(V), descriptor = FD}
+       case is_valid_field_descriptor(FD) of 
+           false -> 
+                #fix_field{};
+           true -> 
+                Fun = FD#fix_field_descriptor.tranform,
+                #fix_field{id = Id, value = Fun(V), descriptor = FD}
     end.
 
 -spec is_valid(F) -> boolean() when
