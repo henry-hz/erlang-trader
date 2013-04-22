@@ -50,6 +50,7 @@ is_valid_field_descriptor(FD) ->
     is_defined_value(FD#fix_field_descriptor.version),
     is_defined_value(FD#fix_field_descriptor.accepted_values).
 
+is_defined_value(V) when is_atom(V) -> V =/= undefined;
 is_defined_value(V) -> V =/= 'undefined'.   
   
 create_field_descriptor(Id) -> 

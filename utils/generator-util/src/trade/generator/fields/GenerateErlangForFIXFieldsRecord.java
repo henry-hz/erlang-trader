@@ -35,7 +35,7 @@ public class GenerateErlangForFIXFieldsRecord {
 			
 			fix_data.write("-define("+ name +", "+ id +").");
 			fix_data.newLine();
-			fix_data.write("-define("+ name +"_Descriptor, #fix_field_descriptor{name = '"+ name +"', xml_tag = '"+ (xmlTag.isEmpty() ? "undefined" : xmlTag) +"', accepted_values = "+ values +", version = '"+ version +"', tranform = fun fix_util:to"+ type +"/1}).");
+			fix_data.write("-define("+ name +"_Descriptor, #fix_field_descriptor{name = '"+ name +"', xml_tag = '"+ (xmlTag.isEmpty() ? "undefined" : xmlTag) +"', accepted_values = "+ values +", version = '"+ version +"', tranform = fun fix_type:to"+ type +"/1}).");
 			fix_data.newLine();
 			fix_data.newLine();
 		}
