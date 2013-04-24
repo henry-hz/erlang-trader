@@ -32,23 +32,22 @@ The "Services" I suggest from this begining (Every service should be an OTP appl
 9. Fix 4.4 Order Server - Translates buy/sell signals from the OMS to Fix protocol (can be done in FPGA too...)
 10. R and Matlab plug-in
 
-Let's use the rebar tool to compile and leave this cool things listed below to be done after we have a small working prototype. Think the prototype as a substitution of a UML diagram.
-
-1. Fault tolerance
-2. Optimization
-3. Scalability
-4. Dynamic-code upgrade
-5. Event handling behaviors
+Let's use the rebar tool to compile and leave this cool things listed below to be done after we have a small working prototype. Optimization should be afterwards, let's make it run to see how beautiful an erlang algorithm can trade, and after.... how fast !!! yeah !!! yeah !!! tons of processes...
 
 
-REBAR RESOURCES
----------------
+
+REBAR 
+-----
 
 To make many apps into one app:
 http://skeptomai.com/?p=56
 
 First tutorial:
 http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html
+
+Since we are using a main rebar.config file, it's worth to know how it manages dependencies
+https://github.com/basho/rebar/wiki/Dependency-management
+
 
 
 ** At Itaú Asset Management, we go even further with the FIX Protocol. We treat it as an important tool for integration between our internal systems. Everyone remembers the traditional conflict between STP and modularity. The FIX Protocol standardised and smoothed the path to modularity! There is no need for creating and managing interfaces, APIs or even Enterprise Service Buses. It is just necessary to include a  FIX engine in your application and specify the communication details to every other application via an XML configuration file.
