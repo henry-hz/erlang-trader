@@ -1,9 +1,0 @@
-Some nice rebar resources:
-
-To make many apps into one app:
-http://skeptomai.com/?p=56
-
-First tutorial:
-http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html
-
-
