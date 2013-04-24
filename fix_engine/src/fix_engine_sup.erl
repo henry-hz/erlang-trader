@@ -1,4 +1,3 @@
-
 -module(fix_engine_sup).
 
 -behaviour(supervisor).

@@ -40,5 +40,16 @@ Let's use the rebar tool to compile and leave this cool things listed below to b
 4. Dynamic-code upgrade
 5. Event handling behaviors
 
+
+REBAR RESOURCES
+---------------
+
+To make many apps into one app:
+http://skeptomai.com/?p=56
+
+First tutorial:
+http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html
+
+
 ** At Itaú Asset Management, we go even further with the FIX Protocol. We treat it as an important tool for integration between our internal systems. Everyone remembers the traditional conflict between STP and modularity. The FIX Protocol standardised and smoothed the path to modularity! There is no need for creating and managing interfaces, APIs or even Enterprise Service Buses. It is just necessary to include a  FIX engine in your application and specify the communication details to every other application via an XML configuration file.
 [By Christian J. Zimmer and Hellinton Hatsuo Takada, Itaú Asset Management]

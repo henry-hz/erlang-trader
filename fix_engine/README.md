@@ -23,6 +23,9 @@ http://www.quickfixengine.org/quickfix/doc/html/install.html
 Good tutorials:
 http://stackoverflow.com/questions/2959788/good-tutorial-about-the-fix-protocol
 
+References:
+http://www.validfix.com/fix-analyzer.html
+
 Candidates for FIX accounts
 http://www.interactivebrokers.com (you have to subscribe for FIX services)
 http://www.integral.com/
