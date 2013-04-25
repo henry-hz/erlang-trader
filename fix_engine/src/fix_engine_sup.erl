@@ -25,16 +25,6 @@ start_link() ->
 %% ===================================================================
 
 init([]) -> 
-    Host = "localhost",
-    {ok, Socket} = gen_tcp:connect(Host,9878,[binary, {packet,0}]),
-    ok = gen_tcp:send(Socket, "hello"),
-    receive_data(Socket, []).
+    {ok, {{one_for_one, 10, 10}, []}}.
 
 
-receive_data(Socket, SoFar) ->
-    receive
-        {tcp, Socket, Bin} ->
-            receive_data(Socket, [Bin | SoFar]);
-        {tcp_closed, Socket} ->
-            list_to_binary(reverse(SoFar))
-    end.

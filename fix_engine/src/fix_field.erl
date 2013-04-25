@@ -4,8 +4,8 @@
          is_defined/1,
          is_valid/1]).
 
--include("fix.hrl").
--include("fix_field.hrl").
+-include("../include/fix.hrl").
+-include("../include/fix_field.hrl").
 
 %% ====================================================================
 %% API functions
