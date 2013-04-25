@@ -1,0 +1,12 @@
+{application, fix_engine,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { fix_engine_app, []}},
+  {env, []}
+ ]}.

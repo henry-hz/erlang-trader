@@ -1,0 +1,10 @@
+{application,fix_engine,
+             [{description,[]},
+              {vsn,"1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {mod,{fix_engine_app,[]}},
+              {env,[]},
+              {modules,[fix_comp,fix_encoder_decoder,fix_engine,
+                        fix_engine_app,fix_engine_sup,fix_field,fix_type,
+                        protocol_encoder,test_logon]}]}.
