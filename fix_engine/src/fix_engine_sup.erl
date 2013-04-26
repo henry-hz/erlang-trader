@@ -25,6 +25,10 @@ start_link() ->
 %% ===================================================================
 
 init([]) -> 
-    {ok, {{one_for_one, 10, 10}, []}}.
+	FixServer = {fix_protocol, {fix_protocol, start_link, []},
+	             permanent, 2000, worker, [fix_protocol]},
+	Children = [FixServer],
+	RestartStrategy = {one_for_one, 10,10},
+    {ok, {RestartStrategy, Children}}.
 
 

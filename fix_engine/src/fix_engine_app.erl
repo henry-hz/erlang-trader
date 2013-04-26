@@ -16,13 +16,16 @@
 %% [Type is usually normal, but can be failover, etc... and StartArgs is whatever arguments
 %% we specify in the 'mod' parameter in the .app file]
 start(_StartType, _StartArgs) ->
-	{ok, _} = ranch:start_listener(fix_engine, 1, ranch_tcp, [{port, 9878}], fix_protocol,[]),
-	case fix_sup:start_link() of
-		{ok, Pid} ->
-			{ok, Pid};
-		Other ->
-			{error, Other}
-	end.
+	{ok, _} = ranch:start_listener(fix_engine, 1, 
+		ranch_tcp, [{port, 5555}], fix_protocol,[]),
+	fix_engine_sup:start_link().
+
+	% case fix_engine_sup:start_link() of
+	% 	{ok, Pid} ->
+	% 		{ok, Pid};
+	% 	Other ->
+	% 		{error, Other}
+	% end.
 
 
 stop(_State) ->
