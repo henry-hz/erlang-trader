@@ -1,13 +1,13 @@
-{application, fix_engine,
+{application, fix,
  [
-  {description, "FIX protocol engine implementation in super Erlang"},
+  {id, "FixEngine"},
+  {description, "FIX Engine"},
   {vsn, "1"},
-  {registered, []},
+  {registered, [fix_sup, fix]},
   {applications, [
                   kernel,
-                  stdlib,
-                  ranch
+                  stdlib
                  ]},
-  {mod, {fix_engine_app, []}},
+  {mod, { fix_engine_app, []}},
   {env, []}
  ]}.

@@ -1,5 +1,5 @@
--ifndef(FIX_HRL_).
--define(FIX_HRL_, 1).
+-ifndef(FIX_FIELD_HRL_).
+-define(FIX_FIELD_HRL_, 1).
 %%--------------------------------------------------------------------------
 
 -type year()     :: 0000..9999.
@@ -58,33 +58,18 @@
 -opaque tLanguage()               :: string().
 
 
--record(fix_field_descriptor,
-    {name :: string(),
-     xml_tag :: string(),
-     accepted_values :: [any()],
-     version :: string(),
-     tranform :: fun((any()) -> any())}).
--type fix_field_descriptor() :: #fix_field_descriptor{}.
-
 -record(fix_field,
-        {id :: non_neg_integer(),
-         value :: [any()] | any(),
-         descriptor :: fix_field_descriptor() }).
+    {id              :: non_neg_integer(),
+     name            :: string(),
+     type            :: string(),
+     xml             :: string(),
+     values          :: [any()],
+     version         :: string()
+%     encode = fun fix_type:encode/2     :: fun((integer(), string()) -> any()),
+%     decode = fun fix_type:decode/2     :: fun((integer(), any()) -> string())
+    }).
 -type fix_field() :: #fix_field{}.
 
-
--record(fix_comp_descriptor,
-        {name :: string(),
-         xml_tag :: string(),
-         category :: string(),
-         repeating :: integer(),
-         type :: string()}).
--type fix_comp_descriptor() :: #fix_comp_descriptor{}.
-
--record(fix_comp,
-        {id :: [non_neg_integer() | fix_comp()],
-         descriptor :: fix_comp_descriptor() }).
--type fix_comp() :: #fix_comp{}.
 
 %%--------------------------------------------------------------------------
 -endif.

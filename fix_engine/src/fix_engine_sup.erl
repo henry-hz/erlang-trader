@@ -2,33 +2,23 @@
 
 -behaviour(supervisor).
 
-%% API
+%% API.
 -export([start_link/0]).
 
-%% Supervisor callbacks
+%% supervisor.
 -export([init/1]).
 
--import(lists, [reverse/1]).
 
-%% Helper macro for declaring children of supervisor
--define(CHILD(I, Type), {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
+%% API.
 
-%% ===================================================================
-%% API functions
-%% ===================================================================
-
+-spec start_link() -> {ok, pid()}.
 start_link() ->
-    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+        supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-%% ===================================================================
-%% Supervisor callbacks
-%% ===================================================================
-
-init([]) -> 
-	FixServer = {fix_protocol, {fix_protocol, start_link, []},
-	             permanent, 2000, worker, [fix_protocol]},
-	Children = [FixServer],
-	RestartStrategy = {one_for_one, 10,10},
-    {ok, {RestartStrategy, Children}}.
-
-
+init([]) ->
+        fix_engine = ets:new(fix_engine, [ordered_set, public, named_table]),
+        Procs = [
+            {fix_engine, {fix_engine, start_link, []},
+                permanent, 5000, worker, [fix_engine]}
+        ],
+        {ok, {{one_for_one, 10, 10}, Procs}}.

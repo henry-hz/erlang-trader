@@ -1,10 +1,8 @@
--module(fix_engine).
--behaviour(gen_server).
+-module(fix_engine_field).
 
-%% ====================================================================
-%% API functions
-%% ====================================================================
--export([]).
+-export([lookup_field/1]).
+
+-include("fix.hrl").
 
 %% Internal exports 
 -export([start_link/0,
@@ -23,6 +21,11 @@ start_link() ->
 
 init([]) -> 
     ignore.
+
+% API
+-spec lookup_field(integer()) -> fix_field().
+lookup_field(Id) -> 
+    ets:lookup(?MODULE, Id).
 
 %% @private
 handle_cast(_Request, State) ->
