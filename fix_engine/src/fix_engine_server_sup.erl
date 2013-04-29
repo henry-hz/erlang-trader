@@ -1,4 +1,4 @@
--module(fix_engine_sup).
+-module(fix_engine_server_sup).
 
 -behaviour(supervisor).
 
@@ -15,10 +15,11 @@
 start_link() ->
         supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
+
 init([]) ->
-        fix_engine = ets:new(fix_engine, [ordered_set, public, named_table]),
+        fix_engine_server = ets:new(fix_engine_server, [ordered_set, public, named_table]),
         Procs = [
-            {fix_engine, {fix_engine, start_link, []},
-                permanent, 5000, worker, [fix_engine]}
+            {fix_engine_server, {fix_engine_server, start_link, []},
+                permanent, 5000, worker, [fix_engine_server]}
         ],
         {ok, {{one_for_one, 10, 10}, Procs}}.

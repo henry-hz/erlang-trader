@@ -1,4 +1,4 @@
--module(fix_engine).
+-module(fix_engine_server).
 -behaviour(gen_server).
 
 %% ====================================================================
@@ -21,8 +21,9 @@
 start_link() ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
+%% Each worker will be a listener to Ranch module.
 init([]) -> 
-    ignore.
+    {ok, _} = ranch:start_listener(?MODULE, 1, ranch_tcp, [{port, 5555}], fix_protocol,[]).
 
 %% @private
 handle_cast(_Request, State) ->
