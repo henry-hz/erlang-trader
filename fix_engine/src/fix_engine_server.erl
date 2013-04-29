@@ -4,7 +4,7 @@
 %% ====================================================================
 %% API functions
 %% ====================================================================
--export([]).
+-export([add_listener/4, remove_listener/2]).
 
 %% Internal exports 
 -export([start_link/0,
@@ -25,7 +25,20 @@ start_link() ->
 init([]) -> 
     {ok, _} = ranch:start_listener(?MODULE, 1, ranch_tcp, [{port, 5555}], fix_protocol,[]).
 
+
+%% @doc Register/Unregister data receivers 
+%% 
+%%
+add_listener(Ref, From, Handler, Filter) ->
+    ok.
+
+remove_listener(Ref, From) ->
+    ok.
+
 %% @private
+handle_call(_Request, _From, State) ->
+    {reply, ignore, State}.
+
 handle_cast(_Request, State) ->
     {noreply, State}.
 
