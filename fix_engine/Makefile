@@ -68,7 +68,7 @@ tests: clean app
 
 build-plt: app
 	@dialyzer --build_plt --output_plt .$(PROJECT).plt \
-		--apps erts kernel stdlib crypto public_key ssl
+		--apps erts kernel stdlib crypto public_key ssl ranch
 
 dialyze:
 	@dialyzer --src src --plt .$(PROJECT).plt \

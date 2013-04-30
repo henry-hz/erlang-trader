@@ -1,6 +1,13 @@
--module(test_logon).
+-module(fix_engine_tests).
+-include_lib("eunit/include/eunit.hrl").
+
 -compile(export_all).
--import(lists,[reverse/1]).
+
+fisrt_test() -> 
+    ok.
+
+
+
 %% simple test to send a FIX logon message to the simulator with Banzai cofig
 %% as explained in the README.md
 %% hey, how can I send "8=FIX.4.2 (byte 01) 9=72 (byte 01) 35=A (byte 01) ?
@@ -28,7 +35,7 @@ receive_data(Socket, SoFar) ->
         {tcp, Socket, Bin} ->
             receive_data(Socket, [Bin, SoFar]);
         {tcp_closed, Socket} ->
-            list_to_binary(reverse(SoFar))
+            list_to_binary(lists:reverse(SoFar))
     after 5000 ->
         io:format("waited too much, closing socket, bye...~n"),
         gen_tcp:close(Socket)
@@ -44,3 +51,6 @@ do_receive(Socket,Data) ->
         {error, einval} ->
             exit("invalid message")
     end.
+
+
+
